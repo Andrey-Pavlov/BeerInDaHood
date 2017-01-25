@@ -221,7 +221,7 @@ module.exports = function (options) {
       new CommonsChunkPlugin({
         name: 'vendor',
         chunks: ['main'],
-        minChunks: function(module) { return /node_modules\//.test(module.resource); }
+        minChunks: function(module) { return /node_modules/.test(module.resource); }
       }),
       // Specify the correct order the scripts will be injected in
       new CommonsChunkPlugin({

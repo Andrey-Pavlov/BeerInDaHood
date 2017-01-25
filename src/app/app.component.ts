@@ -6,7 +6,8 @@ import {
   OnInit,
   ViewEncapsulation
 } from '@angular/core';
-import { AppState } from './app.service';
+import {AppState} from './app.service';
+import {BeerService} from "./beer/services/beer.service";
 
 /*
  * App Component
@@ -43,6 +44,8 @@ import { AppState } from './app.service';
 
     <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
 
+{{ beersArray | json }}
+
     <footer>
       <span>Beer In Da Hood by <a [href]="url">URL name</a></span>
       <div>
@@ -58,12 +61,15 @@ export class AppComponent implements OnInit {
   public name = '';
   public url = '';
 
-  constructor(
-    public appState: AppState
-  ) {}
+  private beersArray: any[];
 
-  public ngOnInit() {
-    console.log('Initial App State', this.appState.state);
+  constructor(public appState: AppState,
+              private beerService: BeerService) {
   }
 
+  public ngOnInit() {
+    this.beerService.getBeers().subscribe((x: any) => {
+      this.beersArray = x;
+    });
+  }
 }

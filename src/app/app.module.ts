@@ -31,6 +31,7 @@ import { XLargeDirective } from './home/x-large';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
+import {BeerService} from "./beer/services/beer.service";
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -64,7 +65,8 @@ type StoreType = {
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
-    APP_PROVIDERS
+    APP_PROVIDERS,
+    BeerService
   ]
 })
 export class AppModule {
