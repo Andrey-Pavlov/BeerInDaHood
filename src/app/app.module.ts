@@ -27,11 +27,11 @@ import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './home';
 import { AboutComponent } from './about';
 import { NoContentComponent } from './no-content';
-import { XLargeDirective } from './home/x-large';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
-import {BeerService} from "./beer/services/beer.service";
+import {BeerService} from "./beer-common/services/beer.service";
+import {BeerPreviewComponent} from './shared/beer-preview/beer-preview.component';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -55,7 +55,7 @@ type StoreType = {
     AboutComponent,
     HomeComponent,
     NoContentComponent,
-    XLargeDirective
+    BeerPreviewComponent
   ],
   imports: [ // import Angular's modules
     BrowserModule,

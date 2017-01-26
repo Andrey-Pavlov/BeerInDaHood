@@ -5,6 +5,7 @@ import {BeersRequest} from "../interfaces/beers-request.interface";
 import {BeersOrder} from "../interfaces/enums/beers-order.enum";
 import {Observable} from "rxjs";
 import 'rxjs/add/operator/map';
+import {Feature} from '../interfaces/feature.interface';
 
 @Injectable()
 export class BeerService extends BeerBaseService {
@@ -13,7 +14,11 @@ export class BeerService extends BeerBaseService {
   }
 
   getBeers(): Observable<any> {
-    let queryString = this.createQueryString(<BeersRequest> { name: 'ale', order: BeersOrder[BeersOrder.random], randomCount: 10});
-    return this.http.get('http://api.brewerydb.com/v2/' + 'beers?' + queryString).map(x => x.json());
+    let queryString = this.createQueryString(<BeersRequest> { order: BeersOrder[BeersOrder.random], randomCount: 10});
+    return this.http.get('http://ekaterina.northeurope.cloudapp.azure.com:4000/api/' + 'beers?' + queryString).map(x => x.json().data);
+  }
+
+  getFeatures(): Observable<Feature[]> {
+    return this.http.get('http://ekaterina.northeurope.cloudapp.azure.com:4000/api/' + 'features/').map(x => x.json().data);
   }
 }

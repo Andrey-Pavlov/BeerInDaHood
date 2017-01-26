@@ -1,0 +1,25 @@
+<div>
+  <div style="text-align: center;">
+    <img style="vertical-align: middle; float: left;" *ngIf="beer.labels" [attr.src]="beer.labels.icon"><span style="line-height: 64px;">{{ beer.name }}</span>
+  </div>
+  <div>
+    <div>
+      Abv: {{ beer.abv }}
+      Available: {{ beer.available }}
+      Variation: {{ beer.beerVariation }}
+
+      Food: {{ beer.foodPairings }}
+
+      Glass: {{ beer.glass }}
+      {{ beer.ibu }}
+      Is Organic: {{ beer.isOrganic }}
+      Original gravity: {{ beer.originalGravity }}
+      Temperature: {{ beer.servingTemperature }} ({{ beer.servingTemperatureDisplay }})
+      Style: {{ beer.style }}
+    </div>
+    <div>
+      <div style="text-align: center;"><strong>Description</strong></div>
+      {{ beer.description }}
+    </div>
+  </div>
+</div>
