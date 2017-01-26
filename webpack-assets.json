@@ -1,0 +1,8 @@
+{
+  "main": {
+    "js": "/BeerInDaHood/main.d0c3b1da94752581d221.bundle.js"
+  },
+  "polyfills": {
+    "js": "/BeerInDaHood/polyfills.d0c3b1da94752581d221.bundle.js"
+  }
+}
