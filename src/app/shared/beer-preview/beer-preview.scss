@@ -1,0 +1,35 @@
+@import "../../../styles/variables";
+
+.beer-preview-app {
+  padding: 0.5rem;
+  border-radius: 5px;
+  vertical-align: top;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 0 1rem lighten($color-yellow, 25%);
+  background-color: $color-dark;
+  color: $color-yellow;
+
+  .beer-preview-app__header {
+    text-align: center;
+
+    .beer-preview-app__header__icon {
+      vertical-align: middle;
+      float: left;
+      margin: 6px;
+    }
+
+    .beer-preview-app__header__title {
+      line-height: 70px;
+    }
+  }
+
+  .beer-preview-app__description {
+    .beer-preview-app__description__header {
+      text-align: center;
+    }
+
+    .beer-preview-app__description__body {
+
+    }
+  }
+}

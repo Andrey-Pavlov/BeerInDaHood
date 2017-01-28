@@ -149,7 +149,7 @@ module.exports = function (options) {
          */
         {
           test: /\.css$/,
-          use: ['to-string-loader', 'css-loader'],
+          use: ['exports-loader?module.exports.toString()', 'css-loader'],
           exclude: [helpers.root('src', 'styles')]
         },
 
@@ -160,7 +160,7 @@ module.exports = function (options) {
          */
         {
           test: /\.scss$/,
-          use: ['to-string-loader', 'css-loader', 'sass-loader'],
+          use: ['exports-loader?module.exports.toString()', 'css-loader', 'sass-loader'],
           exclude: [helpers.root('src', 'styles')]
         },
 
@@ -178,8 +178,8 @@ module.exports = function (options) {
         /* File loader for supporting images, for example, in CSS files.
          */
         {
-          test: /\.(jpg|png|gif)$/,
-          use: 'file-loader'
+          test: /\.(jpg|jpeg|png|gif)$/,
+          use: 'file-loader?name=imgaes/[name].[hash].[ext]'
         },
 
       ],

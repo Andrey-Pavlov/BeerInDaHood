@@ -1,0 +1,16 @@
+<div class="container-fluid">
+  <navigation></navigation>
+  <div class="error-container">
+    <div class="error-text-container">
+      <h1 class="error-text-container__header">
+        500<br/>
+        <div class="error-text-container__header--sub-header">INTERNAL SERVER ERROR</div>
+      </h1>
+      <div class="error-text-container__content">
+        Something went wrong!<br/>
+        Go <a href="#" (click)="goBack()">back</a> or click <a href="#" [routerLink]="['/']">here</a> to go to the<br/>
+        home page
+      </div>
+    </div>
+  </div>
+</div>

@@ -28,10 +28,10 @@ import { HomeComponent } from './home';
 import { AboutComponent } from './about';
 import { NoContentComponent } from './no-content';
 
-import '../styles/styles.scss';
-import '../styles/headings.css';
-import {BeerService} from "./beer-common/services/beer.service";
+import {BeerService} from './beer-common/services/beer.service';
 import {BeerPreviewComponent} from './shared/beer-preview/beer-preview.component';
+import {CoreModule} from './core/core.module';
+import {SharedModule} from './shared/shared.module';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -44,6 +44,11 @@ type StoreType = {
   restoreInputValues: () => void,
   disposeOldHosts: () => void
 };
+
+import '../styles/normalize.css';
+import '../styles/base.scss';
+import '../styles/styles.scss';
+import '../styles/styles/loading.scss';
 
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
@@ -61,7 +66,9 @@ type StoreType = {
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
+    CoreModule.forRoot(),
+    SharedModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,

@@ -10,7 +10,7 @@ import {BeerService} from '../beer-common/services/beer.service';
 import * as _ from 'lodash';
 
 @Component({
-  styleUrls: [ './home.component.css' ],
+  styleUrls: [ './home.component.scss' ],
   templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {

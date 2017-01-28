@@ -23,7 +23,9 @@
 <body>
 
 <app>
-  Loading...
+  <div class="loading-container loading-container--global">
+    <div class="loading-shape"></div>
+  </div>
 </app>
 
 <% if (htmlWebpackPlugin.options.metadata.isDevServer && htmlWebpackPlugin.options.metadata.HMR !== true) { %>
