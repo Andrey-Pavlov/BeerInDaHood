@@ -10,13 +10,14 @@ import {Beer} from '../beer-common/page-models/beer-page-model.interface';
 import {Feature} from '../beer-common/interfaces/feature.interface';
 
 @Component({
-  styleUrls: [ './home.component.scss' ],
+  styleUrls: ['./home.component.scss'],
   templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
 
   public featuresBeers: Beer[] = [];
   public featuredBeer: Beer;
+  public breweries: any[];
 
   constructor(private beerService: BeerService, private globalLoadingService: GlobalLoadingService) {
 
@@ -31,13 +32,16 @@ export class HomeComponent implements OnInit {
 
     this.beerService.getFeatures().subscribe((features: Feature[]) => {
       let featuresBeers = [];
+      let breweries = [];
       _(features).forEach((feature) => {
         // this.featuredBreweries.push(feature.brewery);
         featuresBeers.push(feature.beer);
+        breweries.push(feature.brewery);
       });
 
       this.featuredBeer = featuresBeers[0];
       this.featuresBeers = featuresBeers.slice(1);
+      this.breweries = breweries.slice(0, 5);
 
       // Fake load loading
       // setTimeout(() => {

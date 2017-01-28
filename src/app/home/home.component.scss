@@ -1,18 +1,69 @@
 @import '../../styles/_variables.scss';
 
+.slider {
+  overflow: hidden;
+
+  @keyframes slidy {
+    0% {
+      left: 0%;
+    }
+    20% {
+      left: 0%;
+    }
+    25% {
+      left: -100%;
+    }
+    45% {
+      left: -100%;
+    }
+    50% {
+      left: -200%;
+    }
+    70% {
+      left: -200%;
+    }
+    75% {
+      left: -300%;
+    }
+    85% {
+      left: -300%;
+    }
+    95% {
+      left: -400%;
+    }
+    100% {
+      left: -400%;
+    }
+  }
+
+  figure img {
+    width: 20%;
+    float: left;
+  }
+
+  figure {
+    position: relative;
+    width: 500%;
+    margin: 0;
+    left: 0;
+    text-align: left;
+    font-size: 0;
+    animation: 30s slidy infinite alternate;
+    background-color: $color-dark;
+  }
+
+}
+
 .features {
   h1 {
     background-color: black;
     text-align: center;
     margin-bottom: 0;
+    border-bottom: 1px solid $color-yellow;
   }
 
   .features__week {
     box-shadow: 0 0 1rem 1rem $color-yellow-lighten;
-
-    h1 {
-      border-bottom: 1px solid $color-yellow;
-    }
 
     .features__week__content {
 

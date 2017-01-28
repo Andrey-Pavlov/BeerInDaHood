@@ -38,6 +38,12 @@
       </footer>
     </div>
   </section>
+  <h1>Top 5 brands</h1>
+  <div class="slider">
+    <figure>
+      <img *ngFor="let brewery of breweries" [attr.src]="brewery.images.medium">
+    </figure>
+  </div>
   <h1>All Featured Beer</h1>
   <section class="features__all">
     <div class="features__all__content row">
