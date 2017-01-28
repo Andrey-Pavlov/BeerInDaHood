@@ -5,6 +5,7 @@ html, body{
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   background: url('./shared/assets/img/background/background.jpg');
+  color: $color-yellow;
 }
 
 a.active {
@@ -24,8 +25,4 @@ nav a {
   text-align: center;
   text-decoration: none;
   margin-right: 0.5rem;
-}
-
-main {
-  padding: 0.5rem;
 }

@@ -1,5 +1,50 @@
-<div class="row">
-<template ngFor let-beer [ngForOf]="feautredBeers">
-  <beer-preview class="beer-preview-app col-xs-12 col-sm-6 col-md-4 col-lg-3" [beer]="beer"></beer-preview>
-</template>
+<div class="features">
+  <section class="features__week" *ngIf="featuredBeer">
+    <div class="features__week__content">
+      <h1>Week's Featured Beer</h1>
+      <div class="row">
+        <header class="col-xs-12 col-sm-4">
+          <h2>{{ featuredBeer.nameDisplay }}</h2>
+            <img class="features__week__content__header__image"
+                 [attr.src]="featuredBeer.labels ? featuredBeer.labels.medium : beerLogo">
+        </header>
+        <main class="col-xs-12 col-sm-8">
+          <div class="features__week__content__details__header"><strong>Style</strong></div>
+          <article *ngIf="featuredBeer.style">
+            {{ featuredBeer.style.name }}
+            {{ featuredBeer.style.description }}
+          </article>
+          <div class="features__week__content__details__header"><strong>Description</strong></div>
+          <article>
+            {{ featuredBeer.description }}
+          </article>
+        </main>
+      </div>
+      <footer class="features__week__content__footer">
+        <span *ngIf="featuredBeer.abv" class="col-xs-12 col-sm-6">Abv: {{ featuredBeer.abv }}</span>
+        <span *ngIf="featuredBeer.available"
+              class="col-xs-12 col-sm-6">Available: {{ featuredBeer.available.name }}</span>
+        <span *ngIf="featuredBeer.beerVariation"
+              class="col-xs-12 col-sm-6"> Variation: {{ featuredBeer.beerVariation }}</span>
+
+        <span *ngIf="featuredBeer.foodPairings"
+              class="col-xs-12 col-sm-6">Food: {{ featuredBeer.foodPairings }}</span>
+
+        <span *ngIf="featuredBeer.glass" class="col-xs-12 col-sm-6">Glass: {{ featuredBeer.glass.name }}</span>
+        <span *ngIf="featuredBeer.ibu" class="col-xs-12 col-sm-6">IBU: {{ featuredBeer.ibu }}</span>
+        <span *ngIf="featuredBeer.isOrganic" class="col-xs-12 col-sm-6">Is Organic: {{ featuredBeer.isOrganic === 'Y' ? 'Yes' : 'No' }}</span>
+        <span *ngIf="featuredBeer.originalGravity" class="col-xs-12 col-sm-6">Original gravity: {{ featuredBeer.originalGravity }}</span>
+        <span *ngIf="featuredBeer.servingTemperature" class="col-xs-12 col-sm-6">Temperature: {{ featuredBeer.servingTemperature }}</span>
+      </footer>
+    </div>
+  </section>
+  <h1>All Featured Beer</h1>
+  <section class="features__all">
+    <div class="features__all__content row">
+      <template ngFor let-beer [ngForOf]="featuresBeers">
+        <beer-preview *ngIf="beer.description" class="beer-preview-app col-xs-12 col-sm-6 col-md-4 col-lg-3"
+                      [beer]="beer"></beer-preview>
+      </template>
+    </div>
+  </section>
 </div>

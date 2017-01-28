@@ -1,35 +1,46 @@
 @import "../../../styles/variables";
 
 .beer-preview-app {
-  padding: 0.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   border-radius: 5px;
   vertical-align: top;
   margin-bottom: 0.5rem;
-  box-shadow: 0 0 1rem lighten($color-yellow, 25%);
+  box-shadow: 0 0 1rem $color-yellow-lighten;
   background-color: $color-dark;
-  color: $color-yellow;
+  height: 500px;
+  overflow: hidden;
 
   .beer-preview-app__header {
     text-align: center;
+    margin-bottom: 0.5rem;
+    padding: 0 0.5rem;
+    background-color: black;
 
     .beer-preview-app__header__icon {
       vertical-align: middle;
       float: left;
-      margin: 6px;
     }
 
     .beer-preview-app__header__title {
-      line-height: 70px;
+      color: $color-yellow-lighten;
+      line-height: 64px;
     }
   }
 
+  .beer-preview-app__specification {
+    padding: 0.5rem;
+  }
+
   .beer-preview-app__description {
+
     .beer-preview-app__description__header {
       text-align: center;
+      background-color: black;
     }
 
     .beer-preview-app__description__body {
-
+      padding: 0.5rem;
     }
   }
 }

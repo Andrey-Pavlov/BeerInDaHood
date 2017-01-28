@@ -1,5 +1,60 @@
 @import '../../styles/_variables.scss';
 
-.beer-preview-app {
+.features {
+  h1 {
+    background-color: black;
+    text-align: center;
+    margin-bottom: 0;
+  }
 
+  .features__week {
+    box-shadow: 0 0 1rem 1rem $color-yellow-lighten;
+
+    h1 {
+      border-bottom: 1px solid $color-yellow;
+    }
+
+    .features__week__content {
+
+      header {
+        text-align: center;
+        border-left: 1px solid $color-yellow;
+        border-right: 1px solid $color-yellow;
+      }
+
+      main {
+        padding-left: 0;
+
+        .features__week__content__details__header {
+          text-align: center;
+          background-color: black;
+          padding: 0.5rem 0;
+        }
+
+        article {
+          padding-left: 0.5rem;
+        }
+      }
+    }
+
+    .features__week__content__footer {
+      padding: 0.5rem 0;
+      border-top: 1px solid $color-yellow;
+    }
+  }
+
+  .features__all {
+    .features__all__content {
+      padding: 0.5rem;
+    }
+  }
+}
+
+.features__week__content {
+  background-color: $color-dark;
+
+  .features__week__content__footer {
+    text-align: center;
+    background-color: black;
+  }
 }

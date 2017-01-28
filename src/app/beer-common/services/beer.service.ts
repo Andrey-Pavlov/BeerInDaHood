@@ -20,6 +20,10 @@ export class BeerService extends BaseConfigService {
     return this.http.get(this.createUrl(this.config.paths.beers.all, queryString)).map(x => x.json().data);
   }
 
+  getFeatured(): Observable<Feature> {
+    return this.http.get(this.createUrl(this.config.paths.features.featured)).map(x => x.json().data);
+  }
+
   getFeatures(): Observable<Feature[]> {
     return this.http.get(this.createUrl(this.config.paths.features.all)).map(x => x.json().data);
   }

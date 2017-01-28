@@ -1,5 +1,5 @@
 export interface FeaturesPathsConfig {
   all: string;
-  features: string;
+  feature: string;
   featured: string;
 }

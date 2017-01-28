@@ -1,6 +1,7 @@
 export interface Beer extends Base {
   id: number;
   name: string;
+  nameDisplay: string;
   description: string;
   foodPairings: string;
   originalGravity: number;

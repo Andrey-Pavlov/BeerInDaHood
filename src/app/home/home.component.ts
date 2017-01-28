@@ -3,11 +3,11 @@ import {
   OnInit
 } from '@angular/core';
 
-import { Title } from './title';
-import { XLargeDirective } from './x-large';
-import {BeerService} from '../beer-common/services/beer.service';
-
 import * as _ from 'lodash';
+import {BeerService} from '../beer-common/services/beer.service';
+import {GlobalLoadingService} from '../shared/loading/global-loading.service';
+import {Beer} from '../beer-common/page-models/beer-page-model.interface';
+import {Feature} from '../beer-common/interfaces/feature.interface';
 
 @Component({
   styleUrls: [ './home.component.scss' ],
@@ -15,22 +15,34 @@ import * as _ from 'lodash';
 })
 export class HomeComponent implements OnInit {
 
-  public featuredBreweries: any[] = [];
-  public feautredBeers: any[] = [];
+  public featuresBeers: Beer[] = [];
+  public featuredBeer: Beer;
 
-  constructor(private beerService: BeerService) {
+  constructor(private beerService: BeerService, private globalLoadingService: GlobalLoadingService) {
 
   }
 
   public ngOnInit() {
-    this.beerService.getFeatures().subscribe((features) => {
-      let featuredBeers = [];
+    this.globalLoadingService.startGlobalLoading();
+
+    // this.beerService.getFeatured().subscribe((featured: Feature) => {
+    //   this.featuredBeer = featured.beer;
+    // });
+
+    this.beerService.getFeatures().subscribe((features: Feature[]) => {
+      let featuresBeers = [];
       _(features).forEach((feature) => {
         // this.featuredBreweries.push(feature.brewery);
-        featuredBeers.push(feature.beer);
+        featuresBeers.push(feature.beer);
       });
 
-      this.feautredBeers = featuredBeers;
+      this.featuredBeer = featuresBeers[0];
+      this.featuresBeers = featuresBeers.slice(1);
+
+      // Fake load loading
+      // setTimeout(() => {
+      this.globalLoadingService.stopGlobalLoading();
+      // }, 3000);
     });
   }
 }
