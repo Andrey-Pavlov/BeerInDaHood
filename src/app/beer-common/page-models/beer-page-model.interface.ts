@@ -1,3 +1,4 @@
+import {BreweryPageModel} from './brewery-page-model.interface';
 export interface Beer extends Base {
   id: number;
   name: string;
@@ -30,6 +31,8 @@ export interface Beer extends Base {
   beerVariation: Base;
 
   year: string;
+
+  breweries: BreweryPageModel[];
 }
 
 interface Base {

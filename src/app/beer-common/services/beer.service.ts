@@ -15,9 +15,14 @@ export class BeerService extends BaseConfigService {
     super(config);
   }
 
-  getBeers(): Observable<any> {
-    let queryString = this.createQueryString(<BeersRequest> { order: BeersOrder[BeersOrder.random], randomCount: 10});
-    return this.http.get(this.createUrl(this.config.paths.beers.all, queryString)).map(x => x.json().data);
+  // getBeers(): Observable<any> {
+  //   let queryString = this.createQueryString(<BeersRequest> { order: BeersOrder[BeersOrder.random], randomCount: 10});
+  //   return this.http.get(this.createUrl(this.config.paths.beers.all, queryString)).map(x => x.json().data);
+  // }
+
+  getBeer(beerId: string): Observable<any> {
+    let queryString = this.createQueryString({ withBreweries: 'Y' });
+    return this.http.get(this.createUrl(this.config.paths.beers.beer.format(beerId), queryString)).map(x => x.json().data);
   }
 
   getFeatured(): Observable<Feature> {

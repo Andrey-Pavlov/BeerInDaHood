@@ -1,9 +1,9 @@
 {
-    "endpoint": "http://ekaterina.northeurope.cloudapp.azure.com:4000/api",
+    "endpoint": "http://ekaterina.northeurope.cloudapp.azure.com/api",
     "paths": {
       "beers": {
         "all": "/beers",
-        "beer": "/beer"
+        "beer": "/beer/{0}"
       },
       "features": {
         "all": "/features/",

@@ -1,0 +1,33 @@
+export interface BreweryLocationPageModel {
+  "id": string,
+  "name": string,
+  "streetAddress": string,
+  "locality": string,
+  "region": string,
+  "postalCode": number,
+  "phone": string,
+  "website": string,
+  "hoursOfOperation": string,
+  "latitude": number,
+  "longitude": number,
+  "isPrimary": string,
+  "inPlanning": string,
+  "isClosed": string,
+  "openToPublic": string,
+  "locationType": string,
+  "locationTypeDisplay": string,
+  "countryIsoCode": string,
+  "yearOpened": number,
+  // "status": "verified",
+  // "statusDisplay": "Verified",
+  "createDate": string,
+  "updateDate": string,
+//   "country": {
+//   "isoCode": "US",
+//     "name": "UNITED STATES",
+//     "displayName": "United States",
+//     "isoThree": "USA",
+//     "numberCode": 840,
+//     "createDate": "2012-01-03 02:41:33"
+// }
+}

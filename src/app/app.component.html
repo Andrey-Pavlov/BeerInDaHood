@@ -1,7 +1,10 @@
 <loading [isLoaded]="!loading" [settings]="loadingSettings"></loading>
 <nav>
   <a class="nav-brand" [routerLink]=" [''] " routerLinkActive="active">
-    <img [attr.src]="logo" />
+    <img [attr.src]="logo"/>
+  </a>
+  <a [routerLink]=" [''] " routerLinkActive="active">
+    Home
   </a>
 </nav>
 

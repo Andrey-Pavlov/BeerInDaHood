@@ -8,19 +8,26 @@ html, body {
   color: $color-yellow;
 }
 
+h1 {
+  background-color: black;
+  text-align: center;
+  margin-bottom: 0;
+  border-bottom: 1px solid $color-yellow;
+}
+
 a {
-  color: $color-yellow;
+  color: $color-yellow-lighten;
 
   &:focus {
     outline: none
   }
 
   &:hover, &.hover {
-    color: darken($color-yellow, 10%);
+    color: darken($color-yellow-lighten, 10%);
   }
 
   &:active, &.active {
-    color: darken($color-yellow, 20%);
+    color: darken($color-yellow-lighten, 20%);
   }
 }
 
@@ -39,6 +46,13 @@ nav {
     text-decoration: none;
     margin-right: 0.5rem;
   }
+}
+
+hr {
+  background-color: $color-yellow-darken;
+  height: 1px;
+  border: 0;
+  width: 90%;
 }
 
 .row {

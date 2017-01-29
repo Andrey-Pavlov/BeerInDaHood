@@ -27,7 +27,7 @@ import {AppState, InternalStateType} from './app.service';
 import {HomeComponent} from './home';
 
 import {BeerService} from './beer-common/services/beer.service';
-import {BeerPreviewComponent} from './shared/beer-preview/beer-preview.component';
+import {BeerPreviewComponent} from './home/beer-preview/beer-preview.component';
 import {CoreModule} from './core/core.module';
 import {SharedModule} from './shared/shared.module';
 
@@ -50,6 +50,8 @@ import '../styles/styles/loading.scss';
 import '../styles/styles/buttons.scss';
 import {ServerErrorComponent} from './status-codes-pages/500/server-error';
 import {NoContentComponent} from './status-codes-pages/404/no-content';
+import {FeaturedComponent} from './home/featured/featured.component';
+import {BeerDetailsComponent} from './beer-details/beer-details.component';
 
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
@@ -61,7 +63,9 @@ import {NoContentComponent} from './status-codes-pages/404/no-content';
     HomeComponent,
     NoContentComponent,
     BeerPreviewComponent,
-    ServerErrorComponent
+    ServerErrorComponent,
+    FeaturedComponent,
+    BeerDetailsComponent
   ],
   imports: [ // import Angular's modules
     BrowserModule,

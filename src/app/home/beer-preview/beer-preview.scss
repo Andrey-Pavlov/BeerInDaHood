@@ -1,4 +1,4 @@
-@import "../../../styles/variables";
+@import "../../../styles/_variables";
 
 .beer-preview-app {
   padding-top: 0.5rem;
@@ -49,7 +49,7 @@
 
     .beer-preview-app__description__body {
       padding: 0.5rem;
-      height: 17rem;
+      height: 16.5rem;
       overflow-y: auto;
     }
   }
@@ -59,7 +59,7 @@
     right: 0;
     bottom: 0;
 
-    button {
+    .btn {
       border-top-left-radius: 5px;
     }
   }
