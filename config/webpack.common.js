@@ -179,7 +179,7 @@ module.exports = function (options) {
          */
         {
           test: /\.(jpg|jpeg|png|gif)$/,
-          use: 'file-loader?name=imgaes/[name].[hash].[ext]'
+          use: 'file-loader?name=images/[name].[hash].[ext]'
         },
 
       ],
