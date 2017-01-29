@@ -13,8 +13,8 @@ Features of this web app with featured beer:
 - After build GZIP 9 compression of assets and files
 - Using brewerydb api
 - Home with weekly featured beer, top brands, all featured beer
-- Dynamic title changing
+- Dynamic title changing ![Beer Title](http://puu.sh/tFLm1/9f8b67b669.png)
 - Preloader
 - Beer thematic background
 
-*Icons for organic and not organic beer are included!*
+*Icons for organic and not organic beer are included!* ![Organic Icon](http://puu.sh/tFLva/3d669b9d08.png)
