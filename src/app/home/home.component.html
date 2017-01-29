@@ -4,9 +4,11 @@
       <h1>Week's Featured Beer</h1>
       <div class="row">
         <header class="col-xs-12 col-sm-4">
+          <a href="#">
           <h2>{{ featuredBeer.nameDisplay }}</h2>
             <img class="features__week__content__header__image"
                  [attr.src]="featuredBeer.labels ? featuredBeer.labels.medium : beerLogo">
+          </a>
         </header>
         <main class="col-xs-12 col-sm-8">
           <div class="features__week__content__details__header"><strong>Style</strong></div>
@@ -18,6 +20,9 @@
           <article>
             {{ featuredBeer.description }}
           </article>
+          <div class="features__week__content__details__actions">
+            <button type="button" class="btn btn-primary">Details</button>
+          </div>
         </main>
       </div>
       <footer class="features__week__content__footer">
@@ -41,7 +46,7 @@
   <h1>Top 5 brands</h1>
   <div class="slider">
     <figure>
-      <img *ngFor="let brewery of breweries" [attr.src]="brewery.images.medium">
+      <img *ngFor="let brewery of breweries" [attr.src]="brewery.images.large">
     </figure>
   </div>
   <h1>All Featured Beer</h1>

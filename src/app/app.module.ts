@@ -49,6 +49,7 @@ import '../styles/normalize.css';
 import '../styles/base.scss';
 import '../styles/styles.scss';
 import '../styles/styles/loading.scss';
+import '../styles/styles/buttons.scss';
 
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process

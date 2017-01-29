@@ -27,6 +27,8 @@ export class AppComponent implements OnInit {
   public loading: boolean = false;
   public loadingSettings: GlobalLoadingSettings;
 
+  public logo: string = require('./shared/assets/img/icons/logo-32.png');
+
   constructor(private beerService: BeerService, private globalLoadingService: GlobalLoadingService) {
     globalLoadingService.startLoading$.subscribe((settings: GlobalLoadingSettings) => {
       this.loading = true;
