@@ -1,8 +1,12 @@
 {
+  "vendor": {
+    "js": "vendor.f03778209dcafe19630f.bundle.js"
+  },
   "main": {
-    "js": "/BeerInDaHood/main.d0c3b1da94752581d221.bundle.js"
+    "js": "main.e48c6dee0925a057349c.bundle.js",
+    "css": "main.c4076e4497322a51f2e345baace05855.css"
   },
   "polyfills": {
-    "js": "/BeerInDaHood/polyfills.d0c3b1da94752581d221.bundle.js"
+    "js": "polyfills.3a1a1da33d780ea2a807.bundle.js"
   }
 }
