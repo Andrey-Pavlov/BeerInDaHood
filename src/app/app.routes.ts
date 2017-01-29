@@ -1,14 +1,11 @@
-import { Routes, RouterModule } from '@angular/router';
+import { Routes } from '@angular/router';
 import { HomeComponent } from './home';
-import { AboutComponent } from './about';
-import { NoContentComponent } from './no-content';
 
-import { DataResolver } from './app.resolver';
+import {NoContentComponent} from './status-codes-pages/404/no-content';
+import {ServerErrorComponent} from './status-codes-pages/500/server-error';
 
 export const ROUTES: Routes = [
   { path: '',      component: HomeComponent },
-  { path: 'about', component: AboutComponent },
-  { path: 'detail', loadChildren: './+detail#DetailModule'},
-  { path: 'barrel', loadChildren: './+barrel#BarrelModule'},
+  { path: '500',    component: ServerErrorComponent },
   { path: '**',    component: NoContentComponent },
 ];

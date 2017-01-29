@@ -1,6 +1,6 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import {BrowserModule} from '@angular/platform-browser';
+import {FormsModule} from '@angular/forms';
+import {HttpModule} from '@angular/http';
 import {
   NgModule,
   ApplicationRef
@@ -18,15 +18,13 @@ import {
 /*
  * Platform and Environment providers/directives/pipes
  */
-import { ENV_PROVIDERS } from './environment';
-import { ROUTES } from './app.routes';
+import {ENV_PROVIDERS} from './environment';
+import {ROUTES} from './app.routes';
 // App is our top level component
-import { AppComponent } from './app.component';
-import { APP_RESOLVER_PROVIDERS } from './app.resolver';
-import { AppState, InternalStateType } from './app.service';
-import { HomeComponent } from './home';
-import { AboutComponent } from './about';
-import { NoContentComponent } from './no-content';
+import {AppComponent} from './app.component';
+import {APP_RESOLVER_PROVIDERS} from './app.resolver';
+import {AppState, InternalStateType} from './app.service';
+import {HomeComponent} from './home';
 
 import {BeerService} from './beer-common/services/beer.service';
 import {BeerPreviewComponent} from './shared/beer-preview/beer-preview.component';
@@ -50,24 +48,26 @@ import '../styles/base.scss';
 import '../styles/styles.scss';
 import '../styles/styles/loading.scss';
 import '../styles/styles/buttons.scss';
+import {ServerErrorComponent} from './status-codes-pages/500/server-error';
+import {NoContentComponent} from './status-codes-pages/404/no-content';
 
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
  */
 @NgModule({
-  bootstrap: [ AppComponent ],
+  bootstrap: [AppComponent],
   declarations: [
     AppComponent,
-    AboutComponent,
     HomeComponent,
     NoContentComponent,
-    BeerPreviewComponent
+    BeerPreviewComponent,
+    ServerErrorComponent
   ],
   imports: [ // import Angular's modules
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
+    RouterModule.forRoot(ROUTES, {useHash: true, preloadingStrategy: PreloadAllModules}),
     CoreModule.forRoot(),
     SharedModule
   ],
@@ -79,10 +79,9 @@ import '../styles/styles/buttons.scss';
 })
 export class AppModule {
 
-  constructor(
-    public appRef: ApplicationRef,
-    public appState: AppState
-  ) {}
+  constructor(public appRef: ApplicationRef,
+              public appState: AppState) {
+  }
 
   public hmrOnInit(store: StoreType) {
     if (!store || !store.state) {
@@ -110,7 +109,7 @@ export class AppModule {
     // recreate root elements
     store.disposeOldHosts = createNewHosts(cmpLocation);
     // save input values
-    store.restoreInputValues  = createInputTransfer();
+    store.restoreInputValues = createInputTransfer();
     // remove styles
     removeNgStyles();
   }
