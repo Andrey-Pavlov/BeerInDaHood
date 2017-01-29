@@ -72,7 +72,7 @@ import {BeerDetailsComponent} from './beer-details/beer-details.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES, {useHash: true, preloadingStrategy: PreloadAllModules}),
+    RouterModule.forRoot(ROUTES, {preloadingStrategy: PreloadAllModules}),
     CoreModule.forRoot(),
     SharedModule
   ],
