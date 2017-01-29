@@ -1,7 +1,8 @@
-Beer In Da Hood
+<h1 align="center">Beer In Da Hood</h1>
 ---------------
-
-
+<p align="center">
+<img src="http://static.wixstatic.com/media/eb7169_46566724ee594d89bcc6e0915d5a267b~mv2.jpg_256" />
+</p>
 ----------
 
 
