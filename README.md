@@ -19,3 +19,15 @@ Features of this web app with featured beer:
 - Beer thematic background
 
 *Icons for organic and not organic beer are included!* ![Organic Icon](http://puu.sh/tFLva/3d669b9d08.png)
+
+Check this screenshots of full pages: [Home](/screenshots/2017_01_30_00_08_13_Best_Beer.png/), [Beer](/screenshots/2017_01_30_00_10_09_Beer_FrostNipper.png)
+
+----------
+How to start:
+Install modules: ``npm install``
+
+Dev: ``npm run build:dev``
+
+Prod: ``npm run build:aot:prod``
+
+Server: ``npm run server:prod``
