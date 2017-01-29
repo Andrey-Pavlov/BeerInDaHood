@@ -48,6 +48,7 @@ import '../styles/base.scss';
 import '../styles/styles.scss';
 import '../styles/styles/loading.scss';
 import '../styles/styles/buttons.scss';
+import '../styles/styles/tooltip.scss';
 import {ServerErrorComponent} from './status-codes-pages/500/server-error';
 import {NoContentComponent} from './status-codes-pages/404/no-content';
 import {FeaturedComponent} from './home/featured/featured.component';

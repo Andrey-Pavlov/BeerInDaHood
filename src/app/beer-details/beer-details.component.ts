@@ -6,6 +6,7 @@ import {Beer} from '../beer-common/page-models/beer-page-model.interface';
 import {ActivatedRoute} from '@angular/router';
 import {BeerService} from '../beer-common/services/beer.service';
 import {GlobalLoadingService} from '../shared/loading/global-loading.service';
+import {Title} from '@angular/platform-browser';
 
 
 @Component({
@@ -16,7 +17,9 @@ export class BeerDetailsComponent implements OnInit {
   public beer: Beer;
   public breweries: any;
 
-  constructor(private beerService: BeerService, private route: ActivatedRoute, private globalLoadingService: GlobalLoadingService) {
+  public logoReserve: string = require('../shared/assets/img/icons/yellow-beer-512.png');
+
+  constructor(private beerService: BeerService, private route: ActivatedRoute, private globalLoadingService: GlobalLoadingService, private title: Title) {
 
   }
 
@@ -30,7 +33,13 @@ export class BeerDetailsComponent implements OnInit {
       this.beer = beer;
       this.breweries = beer.breweries;
 
+        this.title.setTitle('Beer - ' + beer.nameDisplay);
+
         this.globalLoadingService.stopGlobalLoading();
     });
+  }
+
+  createLocationTitle(location: any) {
+
   }
 }

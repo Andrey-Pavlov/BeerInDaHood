@@ -59,3 +59,14 @@ hr {
   margin-right: 0;
   margin-left: 0;
 }
+
+.leaf {
+  display: inline-block;
+  width: 16px; height: 16px;
+  border-radius: 100px 0;
+  background-color: #B22B12;
+
+  &.organic {
+    background-color: #A0DE21;
+  }
+}

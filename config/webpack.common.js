@@ -23,7 +23,7 @@ const ngcWebpack = require('ngc-webpack');
 const HMR = helpers.hasProcessFlag('hot');
 const AOT = helpers.hasNpmFlag('aot');
 const METADATA = {
-  title: 'Beer In Da Hood',
+  title: 'Best Beer',
   baseUrl: '/',
   isDevServer: helpers.isWebpackDevServer()
 };
@@ -149,7 +149,7 @@ module.exports = function (options) {
          */
         {
           test: /\.css$/,
-          use: ['exports-loader?module.exports.toString()', 'css-loader'],
+          use: ['exports-loader?module.exports.toString()', 'css-loader', 'postcss-loader'],
           exclude: [helpers.root('src', 'styles')]
         },
 
@@ -160,7 +160,7 @@ module.exports = function (options) {
          */
         {
           test: /\.scss$/,
-          use: ['exports-loader?module.exports.toString()', 'css-loader', 'sass-loader'],
+          use: ['exports-loader?module.exports.toString()', 'css-loader', 'postcss-loader', 'sass-loader'],
           exclude: [helpers.root('src', 'styles')]
         },
 
@@ -252,10 +252,10 @@ module.exports = function (options) {
        *
        * See: https://www.npmjs.com/package/copy-webpack-plugin
        */
-      // new CopyWebpackPlugin([
-      //   { from: 'src/assets', to: 'assets' },
-      //   { from: 'src/meta'}
-      // ]),
+      new CopyWebpackPlugin([
+        { from: 'src/assets', to: 'assets' },
+        // { from: 'src/meta'}
+      ]),
 
 
       /*

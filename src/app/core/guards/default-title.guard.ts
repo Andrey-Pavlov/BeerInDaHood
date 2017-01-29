@@ -8,7 +8,7 @@ export class DefaultTitleGuard implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    this.title.setTitle('Pipelines');
+    this.title.setTitle('Best Beer');
 
     return true;
   }

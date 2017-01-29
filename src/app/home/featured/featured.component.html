@@ -36,7 +36,10 @@
 
       <span *ngIf="beer.glass" class="col-xs-12 col-sm-6">Glass: {{ beer.glass.name }}</span>
       <span *ngIf="beer.ibu" class="col-xs-12 col-sm-6">IBU: {{ beer.ibu }}</span>
-      <span *ngIf="beer.isOrganic" class="col-xs-12 col-sm-6">Is Organic: {{ beer.isOrganic === 'Y' ? 'Yes' : 'No' }}</span>
+      <span *ngIf="beer.isOrganic" class="col-xs-12 col-sm-6">Is Organic: <span class="tooltip"><span class="leaf"
+                                                                                                      [class.organic]="beer.isOrganic === 'Y'"></span>
+  <span class="tooltiptext right">{{beer.isOrganic === 'Y' ? 'Is Organic' : 'Not Organic'}}</span>
+</span></span>
       <span *ngIf="beer.originalGravity" class="col-xs-12 col-sm-6">Original gravity: {{ beer.originalGravity }}</span>
       <span *ngIf="beer.servingTemperature" class="col-xs-12 col-sm-6">Temperature: {{ beer.servingTemperature }}</span>
     </footer>

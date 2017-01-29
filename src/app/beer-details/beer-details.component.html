@@ -5,8 +5,8 @@
       <h1>
         {{beer.nameDisplay}}
       </h1>
-      <div class="beer-details__section__body__image-container" *ngIf="beer.labels">
-        <img [attr.src]="beer.labels.large">
+      <div class="beer-details__section__body__image-container">
+        <img [attr.src]="beer.labels?.large || logoReserve">
       </div>
 
       <div class="shadow-box">
@@ -24,7 +24,10 @@
           <span *ngIf="beer.glass" class="col-xs-12 col-sm-6">Glass: {{ beer.glass.name }}</span>
           <span *ngIf="beer.ibu" class="col-xs-12 col-sm-6">IBU: {{ beer.ibu }}</span>
           <span *ngIf="beer.isOrganic"
-                class="col-xs-12 col-sm-6">Is Organic: {{ beer.isOrganic === 'Y' ? 'Yes' : 'No' }}</span>
+                class="col-xs-12 col-sm-6">Is Organic:
+            <span class="tooltip"><span class="leaf" [class.organic]="beer.isOrganic === 'Y'"></span>
+  <span class="tooltiptext right">{{beer.isOrganic === 'Y' ? 'Is Organic' : 'Not Organic'}}</span>
+</span></span>
           <span *ngIf="beer.originalGravity"
                 class="col-xs-12 col-sm-6">Original gravity: {{ beer.originalGravity }}</span>
           <span *ngIf="beer.servingTemperature"
@@ -91,7 +94,9 @@
       <div class="beer-details__section__body__container" *ngFor="let brewery of beer.breweries">
         <h2>
           <a [attr.href]="brewery.website">{{ brewery.name }}</a> ({{ brewery.nameShortDisplay }}) from {{
-          brewery.established }} {{ brewery.isOrganic }}
+          brewery.established }} <span class="tooltip"><span class="leaf" [class.organic]="brewery.isOrganic === 'Y'"></span>
+  <span class="tooltiptext right">{{brewery.isOrganic === 'Y' ? 'Is Organic' : 'Not Organic'}}</span>
+</span>
         </h2>
 
         <div class="beer-details__section__body__image-container">
@@ -105,8 +110,11 @@
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let location of brewery.locations">
             <div class="beer-details__section__brewery__location shadow-box" [attr.id]="location.name">
-              <h3 *ngIf="location.name"><a [attr.href]="location.website || '#' + location.name" [attr.title]="location.name + ' (' + location.countryIsoCode + ') from ' + (location.yearOpened)">{{ location.name }}</a>
-                ({{location.countryIsoCode}}) from {{ location.yearOpened }}</h3>
+              <h3 *ngIf="location.name">
+                <template [ngIf]="location.website"><a [attr.href]="location.website">{{ location.name }}</a></template>
+                <template [ngIf]="!location.website">{{ location.name }}</template>
+                ({{location.countryIsoCode}}) <template [ngIf]="location.yearOpened">from {{ location.yearOpened }}</template>
+              </h3>
               <main>
                 <div *ngIf="location.streetAddress">{{ location.streetAddress }} {{ location.locality }} {{
                   location.region }}
