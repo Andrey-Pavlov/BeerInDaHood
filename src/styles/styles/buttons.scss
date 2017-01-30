@@ -1,0 +1,64 @@
+@import '../variables';
+
+.btn {
+  padding: 0.5rem;
+  color: white;
+  border: 0;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+
+  &:focus {
+    outline: none
+  }
+
+  &.btn-primary {
+    background-color: $color-blue-1;
+
+    $color: $color-blue-1;
+
+    &:hover,
+    &.hover {
+      background-color: darken($color, 10%);
+    }
+
+    &:active,
+    &.active {
+      background-color: darken($color, 20%);
+    }
+  }
+
+  &.btn-primary-1 {
+    background-color: $color-blue-2;
+
+    $color: $color-blue-2;
+
+    &:hover,
+    &.hover {
+      background-color: darken($color, 10%);
+    }
+
+    &:active,
+    &.active {
+      background-color: darken($color, 20%);
+    }
+  }
+
+  &.btn-secondary {
+    color: black;
+
+    $color: white;
+
+    background-color: $color;
+
+    &:hover,
+    &.hover {
+      background-color: darken($color, 10%);
+    }
+
+    &:active,
+    &.active {
+      background-color: darken($color, 20%);
+    }
+  }
+}

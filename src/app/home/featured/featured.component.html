@@ -1,0 +1,47 @@
+<section class="features__week" *ngIf="beer">
+  <div class="features__week__content">
+    <h1>Week's Featured Beer</h1>
+    <div class="row">
+      <header class="col-xs-12 col-sm-4">
+        <a [routerLink]="['/beer', beer.id]">
+          <h2>{{ beer.nameDisplay }}</h2>
+          <img class="features__week__content__header__image"
+               [attr.src]="beer.labels ? beer.labels.medium : beerLogo">
+        </a>
+      </header>
+      <main class="col-xs-12 col-sm-8">
+        <div class="features__week__content__details__header"><strong>Style</strong></div>
+        <article *ngIf="beer.style">
+          {{ beer.style.name }}
+          {{ beer.style.description }}
+        </article>
+        <div class="features__week__content__details__header"><strong>Description</strong></div>
+        <article>
+          {{ beer.description }}
+        </article>
+        <div class="features__week__content__details__actions">
+          <a [routerLink]="['/beer', beer.id]" class="btn btn-primary">Details</a>
+        </div>
+      </main>
+    </div>
+    <footer class="features__week__content__footer">
+      <span *ngIf="beer.abv" class="col-xs-12 col-sm-6">Abv: {{ beer.abv }}</span>
+      <span *ngIf="beer.available"
+            class="col-xs-12 col-sm-6">Available: {{ beer.available.name }}</span>
+      <span *ngIf="beer.beerVariation"
+            class="col-xs-12 col-sm-6"> Variation: {{ beer.beerVariation }}</span>
+
+      <span *ngIf="beer.foodPairings"
+            class="col-xs-12 col-sm-6">Food: {{ beer.foodPairings }}</span>
+
+      <span *ngIf="beer.glass" class="col-xs-12 col-sm-6">Glass: {{ beer.glass.name }}</span>
+      <span *ngIf="beer.ibu" class="col-xs-12 col-sm-6">IBU: {{ beer.ibu }}</span>
+      <span *ngIf="beer.isOrganic" class="col-xs-12 col-sm-6">Is Organic: <span class="tooltip"><span class="leaf"
+                                                                                                      [class.organic]="beer.isOrganic === 'Y'"></span>
+  <span class="tooltiptext right">{{beer.isOrganic === 'Y' ? 'Is Organic' : 'Not Organic'}}</span>
+</span></span>
+      <span *ngIf="beer.originalGravity" class="col-xs-12 col-sm-6">Original gravity: {{ beer.originalGravity }}</span>
+      <span *ngIf="beer.servingTemperature" class="col-xs-12 col-sm-6">Temperature: {{ beer.servingTemperature }}</span>
+    </footer>
+  </div>
+</section>

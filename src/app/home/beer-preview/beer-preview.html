@@ -1,0 +1,30 @@
+<div class="beer-preview-app">
+  <div class="beer-preview-app__header">
+    <a [routerLink]="['/beer', beer.id]">
+      <img class="beer-preview-app__header__icon" [attr.src]="beer.labels ? beer.labels.icon : beerLogo">
+      <strong class="beer-preview-app__header__title">{{ beer.nameDisplay }}</strong>
+    </a>
+  </div>
+  <div class="beer-preview-app__specification">
+    <div class="row">
+      <div *ngIf="beer.abv" class="col-xs-12 col-sm-6">Abv: {{ beer.abv }}</div>
+      <div *ngIf="beer.available" class="col-xs-12 col-sm-6">Available: {{ beer.available.name }}</div>
+      <div *ngIf="beer.beerVariation" class="col-xs-12 col-sm-6"> Variation: {{ beer.beerVariation }}</div>
+
+      <div *ngIf="beer.glass" class="col-xs-12 col-sm-6">Glass: {{ beer.glass.name }}</div>
+      <div *ngIf="beer.ibu" class="col-xs-12 col-sm-6">IBU: {{ beer.ibu }}</div>
+      <div *ngIf="beer.isOrganic" class="col-xs-12 col-sm-6">Is Organic: <span class="tooltip"><span [attr.title]="beer.isOrganic === 'Y' ? 'Is Organic' : 'Not Organic'" class="leaf" [class.organic]="beer.isOrganic === 'Y'"></span></span>
+      </div>
+      <div *ngIf="beer.originalGravity" class="col-xs-12 col-sm-6">Original gravity: {{ beer.originalGravity }}</div>
+      <div *ngIf="beer.servingTemperature" class="col-xs-12 col-sm-6">Temperature: {{ beer.servingTemperature }}</div>
+      <div *ngIf="beer.foodPairings" class="col-xs-12">Food: {{ beer.foodPairings }}</div>
+    </div>
+  </div>
+  <div class="beer-preview-app__description">
+    <div class="beer-preview-app__description__header"><strong>Description</strong></div>
+    <div class="beer-preview-app__description__body">{{ beer.description }}</div>
+  </div>
+  <div class="beer-preview-app__details">
+    <a class="btn btn-primary" [routerLink]="['/beer', beer.id]">Details</a>
+  </div>
+</div>

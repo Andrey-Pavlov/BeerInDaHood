@@ -6,7 +6,10 @@ import {
   OnInit,
   ViewEncapsulation
 } from '@angular/core';
-import { AppState } from './app.service';
+import {AppState} from './app.service';
+import {BeerService} from "./beer-common/services/beer.service";
+import {GlobalLoadingService} from './shared/loading/global-loading.service';
+import {GlobalLoadingSettings} from './shared/loading/interfaces/global-loading-settings.interface';
 
 /*
  * App Component
@@ -16,54 +19,27 @@ import { AppState } from './app.service';
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
   styleUrls: [
-    './app.component.css'
+    './app.component.scss'
   ],
-  template: `
-    <nav>
-      <a [routerLink]=" ['./'] " routerLinkActive="active">
-        Index
-      </a>
-      <a [routerLink]=" ['./home'] " routerLinkActive="active">
-        Home
-      </a>
-      <a [routerLink]=" ['./detail'] " routerLinkActive="active">
-        Detail
-      </a>
-      <a [routerLink]=" ['./barrel'] " routerLinkActive="active">
-        Barrel
-      </a>
-      <a [routerLink]=" ['./about'] " routerLinkActive="active">
-        About
-      </a>
-    </nav>
-
-    <main>
-      <router-outlet></router-outlet>
-    </main>
-
-    <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
-
-    <footer>
-      <span>Beer In Da Hood by <a [href]="url">URL name</a></span>
-      <div>
-        <a [href]="url">
-          <img [src]="" width="25%">
-        </a>
-      </div>
-    </footer>
-  `
+  templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
-  public src = '';
-  public name = '';
-  public url = '';
+  public loading: boolean = false;
+  public loadingSettings: GlobalLoadingSettings;
 
-  constructor(
-    public appState: AppState
-  ) {}
+  public logo: string = require('./shared/assets/img/icons/logo-32.png');
 
-  public ngOnInit() {
-    console.log('Initial App State', this.appState.state);
+  constructor(private beerService: BeerService, private globalLoadingService: GlobalLoadingService) {
+    globalLoadingService.startLoading$.subscribe((settings: GlobalLoadingSettings) => {
+      this.loading = true;
+      this.loadingSettings = Object.assign({}, <GlobalLoadingSettings> {isGlobal: true}, settings);
+    });
+
+    globalLoadingService.stopLoading$.subscribe(() => {
+      this.loading = false;
+    });
   }
 
+  public ngOnInit() {
+  }
 }

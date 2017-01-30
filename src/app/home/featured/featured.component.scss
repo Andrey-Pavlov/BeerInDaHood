@@ -1,0 +1,50 @@
+@import '../../../styles/variables';
+
+.features__week {
+  box-shadow: 0 0 0.5rem 0.5rem $color-yellow-lighten;
+
+  .features__week__content {
+    background-color: $color-dark;
+
+    header {
+      text-align: center;
+      border-left: 1px solid $color-yellow;
+      border-right: 1px solid $color-yellow;
+    }
+
+    main {
+      position: relative;
+      padding-left: 0;
+      padding-right: 0;
+
+      .features__week__content__details__header {
+        text-align: center;
+        background-color: black;
+        padding: 0.5rem 0;
+      }
+
+      article {
+        padding-left: 0.5rem;
+      }
+
+      .features__week__content__details__actions {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+
+        .btn {
+          border-top-left-radius: 0.5rem;
+          font-size: 2rem;
+          padding-right: 2rem;
+        }
+      }
+    }
+
+    .features__week__content__footer {
+      padding: 0.5rem 0;
+      border-top: 1px solid $color-yellow;
+      text-align: center;
+      background-color: black;
+    }
+  }
+}

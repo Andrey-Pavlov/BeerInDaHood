@@ -1,37 +1,22 @@
-<div class="card-container">
-  <h1 x-large class="sample-content">Your Content Here</h1>
+<div class="features">
+<featured [beer]="featuredBeer"></featured>
 
-  <hr>
-
-  <div>
-    For hot module reloading run
-    <pre>npm run start:hmr</pre>
+  <h1>Top 5 brands</h1>
+  <div class="slider">
+    <figure>
+      <img *ngFor="let brewery of breweries" [attr.src]="brewery.images.large">
+    </figure>
   </div>
 
-  <hr>
-
-  <div>
-    <h4>Local State</h4>
-
-    <form (ngSubmit)="submitState(localState.value)" autocomplete="off">
-
-      <input
-        [value]="localState.value"
-        (input)="localState.value = $event.target.value"
-        placeholder="Submit Local State to App State"
-        autofocus>
-
-      <button md-raised-button color="primary">Submit Value</button>
-    </form>
-    <!--
-        <input type="text" [value]="localState.value" (input)="localState.value = $event.target.value" autofocus>
-        Rather than wiring up two-way data-binding ourselves with [value] and (input)
-        we can use Angular's [(ngModel)] syntax
-        <input type="text" name="textInput" [(ngModel)]="localState.value" autofocus>
-      -->
-
-    <pre>this.localState = {{ localState | json }}</pre>
-
-  </div>
-
+  <h1>All Featured Beer</h1>
+  <section class="features__all">
+    <div class="features__all__content">
+      <div class="row">
+      <template ngFor let-beer [ngForOf]="featuresBeers">
+        <beer-preview *ngIf="beer.description" class="beer-preview-app col-xs-12 col-sm-6 col-md-4 col-lg-3"
+                      [beer]="beer"></beer-preview>
+      </template>
+      </div>
+    </div>
+  </section>
 </div>

@@ -1,0 +1,27 @@
+.no-content-container {
+  position: relative;
+  //background-image: url('../../assets/img/backgrounds/404.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+  background-color: #454545;
+  height: 100%;
+}
+
+.no-content-text-container {
+  position: relative;
+  margin: 0 auto;
+  top: 25%;
+
+  text-align: center;
+
+  .no-content-text-container__header {
+    margin-bottom: 3rem;
+    font-weight: bold;
+    font-size: 5rem;
+  }
+
+  .no-content-text-container__content {
+    font-size: 2.5rem;
+  }
+}

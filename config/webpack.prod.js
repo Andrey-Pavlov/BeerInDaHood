@@ -1,7 +1,7 @@
 const helpers = require('./helpers');
 const webpackMerge = require('webpack-merge'); // used to merge webpack configs
 const commonConfig = require('./webpack.common.js'); // the settings that are common to prod and dev
-
+var CompressionPlugin = require("compression-webpack-plugin");
 /**
  * Webpack Plugins
  */
@@ -88,9 +88,9 @@ module.exports = function (env) {
         {
           test: /\.css$/,
           loader: ExtractTextPlugin.extract({
-              fallbackLoader: 'style-loader',
-              loader: 'css-loader'
-            }),
+            fallbackLoader: 'style-loader',
+            loader: 'css-loader!postcss-loader'
+          }),
           include: [helpers.root('src', 'styles')]
         },
 
@@ -100,9 +100,9 @@ module.exports = function (env) {
         {
           test: /\.scss$/,
           loader: ExtractTextPlugin.extract({
-              fallbackLoader: 'style-loader',
-              loader: 'css-loader!sass-loader'
-            }),
+            fallbackLoader: 'style-loader',
+            loader: 'css-loader!postcss-loader!sass-loader'
+          }),
           include: [helpers.root('src', 'styles')]
         },
 
@@ -255,10 +255,13 @@ module.exports = function (env) {
        * See: https://github.com/webpack/compression-webpack-plugin
        */
       //  install compression-webpack-plugin
-      // new CompressionPlugin({
-      //   regExp: /\.css$|\.html$|\.js$|\.map$/,
-      //   threshold: 2 * 1024
-      // })
+      new CompressionPlugin({
+        asset: "[path].gz[query]",
+        algorithm: "gzip",
+        test: /\.css$|\.html$|\.js$|\.map$|\.xml$|\.json$|\.svg$|\.ttf$|\.eot$/,
+        threshold: 0,
+        minRatio: 1
+      }),
 
       /**
        * Plugin LoaderOptionsPlugin (experimental)

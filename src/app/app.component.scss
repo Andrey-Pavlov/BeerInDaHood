@@ -1,0 +1,72 @@
+@import '../styles/_variables.scss';
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: url('./shared/assets/img/background/background.jpg');
+  color: $color-yellow;
+}
+
+h1 {
+  background-color: black;
+  text-align: center;
+  margin-bottom: 0;
+  border-bottom: 1px solid $color-yellow;
+}
+
+a {
+  color: $color-yellow-lighten;
+
+  &:focus {
+    outline: none
+  }
+
+  &:hover, &.hover {
+    color: darken($color-yellow-lighten, 10%);
+  }
+
+  &:active, &.active {
+    color: darken($color-yellow-lighten, 20%);
+  }
+}
+
+nav {
+  vertical-align: middle;
+  background-color: $color-dark;
+  padding: 0.5rem;
+
+  a {
+    &.nav-brand {
+      display: inline-block;
+    }
+
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
+    margin-right: 0.5rem;
+  }
+}
+
+hr {
+  background-color: $color-yellow-darken;
+  height: 1px;
+  border: 0;
+  width: 90%;
+}
+
+.row {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.leaf {
+  display: inline-block;
+  width: 16px; height: 16px;
+  border-radius: 100px 0;
+  background-color: #B22B12;
+
+  &.organic {
+    background-color: #A0DE21;
+  }
+}

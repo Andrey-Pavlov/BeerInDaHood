@@ -3,41 +3,50 @@ import {
   OnInit
 } from '@angular/core';
 
-import { AppState } from '../app.service';
-import { Title } from './title';
-import { XLargeDirective } from './x-large';
+import * as _ from 'lodash';
+import {BeerService} from '../beer-common/services/beer.service';
+import {GlobalLoadingService} from '../shared/loading/global-loading.service';
+import {Beer} from '../beer-common/page-models/beer-page-model.interface';
+import {Feature} from '../beer-common/interfaces/feature.interface';
 
 @Component({
-  // The selector is what angular internally uses
-  // for `document.querySelectorAll(selector)` in our index.html
-  // where, in this case, selector is the string 'home'
-  selector: 'home',  // <home></home>
-  // We need to tell Angular's Dependency Injection which providers are in our app.
-  providers: [
-    Title
-  ],
-  // Our list of styles in our component. We may add more to compose many styles together
-  styleUrls: [ './home.component.css' ],
-  // Every Angular template is first compiled by the browser before Angular runs it's compiler
+  styleUrls: ['./home.component.scss'],
   templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
-  // Set our default values
-  public localState = { value: '' };
-  // TypeScript public modifiers
-  constructor(
-    public appState: AppState,
-    public title: Title
-  ) {}
 
-  public ngOnInit() {
-    console.log('hello `Home` component');
-    // this.title.getData().subscribe(data => this.data = data);
+  public featuresBeers: Beer[] = [];
+  public featuredBeer: Beer;
+  public breweries: any[];
+
+  constructor(private beerService: BeerService, private globalLoadingService: GlobalLoadingService) {
+
   }
 
-  public submitState(value: string) {
-    console.log('submitState', value);
-    this.appState.set('value', value);
-    this.localState.value = '';
+  public ngOnInit() {
+    this.globalLoadingService.startGlobalLoading();
+
+    // this.beerService.getFeatured().subscribe((featured: Feature) => {
+    //   this.featuredBeer = featured.beer;
+    // });
+
+    this.beerService.getFeatures().subscribe((features: Feature[]) => {
+      let featuresBeers = [];
+      let breweries = [];
+      _(features).forEach((feature) => {
+        // this.featuredBreweries.push(feature.brewery);
+        featuresBeers.push(feature.beer);
+        breweries.push(feature.brewery);
+      });
+
+      this.featuredBeer = featuresBeers[0];
+      this.featuresBeers = featuresBeers.slice(1);
+      this.breweries = breweries.slice(0, 5);
+
+      // Fake load loading
+      // setTimeout(() => {
+      this.globalLoadingService.stopGlobalLoading();
+      // }, 3000);
+    });
   }
 }

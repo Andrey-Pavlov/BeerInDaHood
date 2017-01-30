@@ -1,0 +1,135 @@
+<div *ngIf="beer" class="beer-details">
+
+  <section class="beer-details__section beer-details__section__beer">
+    <div class="beer-details__section__body">
+      <h1>
+        {{beer.nameDisplay}}
+      </h1>
+      <div class="beer-details__section__body__image-container">
+        <img [attr.src]="beer.labels?.large || logoReserve">
+      </div>
+
+      <div class="shadow-box">
+        <div class="beer-details__section__body__section">
+        <div class="row">
+          <span *ngIf="beer.abv" class="col-xs-12 col-sm-6">Abv: {{ beer.abv }}</span>
+          <span *ngIf="beer.available"
+                class="col-xs-12 col-sm-6">Available: {{ beer.available.name }} {{ beer.available.description }}</span>
+          <span *ngIf="beer.beerVariation"
+                class="col-xs-12 col-sm-6"> Variation: {{ beer.beerVariation }}</span>
+
+          <span *ngIf="beer.foodPairings"
+                class="col-xs-12 col-sm-6">Food: {{ beer.foodPairings }}</span>
+
+          <span *ngIf="beer.glass" class="col-xs-12 col-sm-6">Glass: {{ beer.glass.name }}</span>
+          <span *ngIf="beer.ibu" class="col-xs-12 col-sm-6">IBU: {{ beer.ibu }}</span>
+          <span *ngIf="beer.isOrganic"
+                class="col-xs-12 col-sm-6">Is Organic:
+            <span class="tooltip"><span class="leaf" [class.organic]="beer.isOrganic === 'Y'"></span>
+  <span class="tooltiptext right">{{beer.isOrganic === 'Y' ? 'Is Organic' : 'Not Organic'}}</span>
+</span></span>
+          <span *ngIf="beer.originalGravity"
+                class="col-xs-12 col-sm-6">Original gravity: {{ beer.originalGravity }}</span>
+          <span *ngIf="beer.servingTemperature"
+                class="col-xs-12 col-sm-6">Temperature: {{ beer.servingTemperature }}</span>
+
+          <span *ngIf="beer.servingTemperature"
+                class="col-xs-12 col-sm-6">Temperature: {{ beer.servingTemperature }}</span>
+          <span *ngIf="beer.srm" class="col-xs-12 col-sm-6">Srm: {{ beer.srm.name }} {{ beer.srm.hex}}</span>
+        </div>
+        </div>
+        <hr>
+        <article class="beer-details__section__description beer-details__section__body__section ">
+          {{ beer.description }}
+        </article>
+      </div>
+
+      <div class="shadow-box">
+        <h2>{{ beer.style.name }} ({{ beer.style.shortName }}) from {{ beer.style.category.name }}</h2>
+        <div class="beer-details__section__description beer-details__section__body__section">{{
+          beer.style.description }}
+        </div>
+        <hr>
+        <div class="beer-details__section__body__section">
+          <div class="row">
+            <div *ngIf="beer.style.ibuMin"
+                 class="col-xs-12 col-sm-6 col-md-4 col-lg-3">ibuMin: {{ beer.style.ibuMin }}
+            </div>
+            <div *ngIf="beer.style.ibuMax"
+                 class="col-xs-12 col-sm-6 col-md-4 col-lg-3">ibuMax: {{ beer.style.ibuMax }}
+            </div>
+            <div *ngIf="beer.style.abvMin"
+                 class="col-xs-12 col-sm-6 col-md-4 col-lg-3">abvMin: {{ beer.style.abvMin }}
+            </div>
+            <div *ngIf="beer.style.abvMax"
+                 class="col-xs-12 col-sm-6 col-md-4 col-lg-3">abvMax: {{ beer.style.abvMax }}
+            </div>
+            <div *ngIf="beer.style.srmMin"
+                 class="col-xs-12 col-sm-6 col-md-4 col-lg-3">srmMin: {{ beer.style.srmMin }}
+            </div>
+            <div *ngIf="beer.style.srmMax"
+                 class="col-xs-12 col-sm-6 col-md-4 col-lg-3">srmMax: {{ beer.style.srmMax }}
+            </div>
+            <div *ngIf="beer.style.ogMin"
+                 class="col-xs-12 col-sm-6 col-md-4 col-lg-3">ogMin: {{ beer.style.ogMin }}
+            </div>
+            <div *ngIf="beer.style.fgMin"
+                 class="col-xs-12 col-sm-6 col-md-4 col-lg-3">fgMin: {{ beer.style.fgMin }}
+            </div>
+            <div *ngIf="beer.style.fgMax"
+                 class="col-xs-12 col-sm-6 col-md-4 col-lg-3">fgMax: {{ beer.style.fgMax }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <a class="btn btn-secondary" [routerLink]="['/']">Go To Home</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="beer-details__section beer-details__section__brewery">
+    <div class="beer-details__section__body">
+      <h1>Breweries</h1>
+      <div class="beer-details__section__body__container" *ngFor="let brewery of beer.breweries">
+        <h2>
+          <a [attr.href]="brewery.website">{{ brewery.name }}</a> ({{ brewery.nameShortDisplay }}) from {{
+          brewery.established }} <span class="tooltip"><span class="leaf" [class.organic]="brewery.isOrganic === 'Y'"></span>
+  <span class="tooltiptext right">{{brewery.isOrganic === 'Y' ? 'Is Organic' : 'Not Organic'}}</span>
+</span>
+        </h2>
+
+        <div class="beer-details__section__body__image-container">
+          <img [attr.src]="brewery.images.large"/>
+        </div>
+
+        <article class="beer-details__section__description beer-details__section__body__section shadow-box">{{
+          brewery.description }}
+        </article>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let location of brewery.locations">
+            <div class="beer-details__section__brewery__location shadow-box" [attr.id]="location.name">
+              <h3 *ngIf="location.name">
+                <template [ngIf]="location.website"><a [attr.href]="location.website">{{ location.name }}</a></template>
+                <template [ngIf]="!location.website">{{ location.name }}</template>
+                ({{location.countryIsoCode}}) <template [ngIf]="location.yearOpened">from {{ location.yearOpened }}</template>
+              </h3>
+              <main>
+                <div *ngIf="location.streetAddress">{{ location.streetAddress }} {{ location.locality }} {{
+                  location.region }}
+                </div>
+                <div *ngIf="location.locationTypeDisplay">Location Type: <strong>{{ location.locationTypeDisplay
+                  }}</strong></div>
+                <div *ngIf="location.postalCode">Zip Code: {{ location.postalCode }}</div>
+                <div *ngIf="location.phone">Phone: <a [attr.href]="'tel:' + location.phone">{{ location.phone }}</a>
+                </div>
+                <div *ngIf="location.hoursOfOperation">Opening hours: {{ location.hoursOfOperation }}</div>
+              </main>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

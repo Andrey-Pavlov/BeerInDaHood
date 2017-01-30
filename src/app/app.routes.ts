@@ -1,15 +1,15 @@
-import { Routes, RouterModule } from '@angular/router';
+import { Routes } from '@angular/router';
 import { HomeComponent } from './home';
-import { AboutComponent } from './about';
-import { NoContentComponent } from './no-content';
 
-import { DataResolver } from './app.resolver';
+import {NoContentComponent} from './status-codes-pages/404/no-content';
+import {ServerErrorComponent} from './status-codes-pages/500/server-error';
+import {BeerDetailsComponent} from './beer-details/beer-details.component';
+import {DefaultTitleGuard} from './core/guards/default-title.guard';
 
 export const ROUTES: Routes = [
-  { path: '',      component: HomeComponent },
-  { path: 'home',  component: HomeComponent },
-  { path: 'about', component: AboutComponent },
-  { path: 'detail', loadChildren: './+detail#DetailModule'},
-  { path: 'barrel', loadChildren: './+barrel#BarrelModule'},
-  { path: '**',    component: NoContentComponent },
+  { path: '',      component: HomeComponent, canActivate: [DefaultTitleGuard] },
+  { path: 'beer/:id', component: BeerDetailsComponent },
+  { path: '500',    component: ServerErrorComponent, canActivate: [DefaultTitleGuard] },
+  { path: '404',    component: NoContentComponent, canActivate: [DefaultTitleGuard] },
+  { path: '**',    component: HomeComponent, canActivate: [DefaultTitleGuard] },
 ];
